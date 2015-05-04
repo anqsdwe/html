@@ -90,8 +90,8 @@
 				<!-- 슬라이드바 옵션 !--->
 				
                 	<div class="options">
-                &nbsp&nbsp    <input id="ex6" type="text" data-slider-ticks="['2008-01','2008-02']" data-slider-ticks-snap-bounds="1" data-slider-ticks-label='["2008년 10월","2008년 2월"]'>
-      			<span id="ex6CurrentSliderValLabel" style="color:white">Current Slider Value: <span id="ex6SliderVal">2008</span></span>
+                &nbsp&nbsp    <input id="ex6" type="text" data-slider-min="2008" data-slider-max="2015" data-slider-step="1" data-slider-value="3" data="value: '4'" value="4" style="display: none;">
+      			<span id="ex6CurrentSliderValLabel" style="color:white">Current Slider Value: <span id="ex6SliderVal">4</span></span>
 				<!-- 슬라이드바 옵션 !--->
                     </div>
                 	<div id="map">
@@ -282,12 +282,12 @@
     <script type="text/javascript" src="js/bootstrap-slider.js"></script>
     <script type="text/javascript">
     	$(document).ready(function() {
-			
-$("#ex6").slider({
-    ticks: ['2008-01', '2008-02'],
-    ticks_labels: ['2008년 10월', '2009년 10월'],
-    ticks_snap_bounds: 1
-});
+			/* Example 6 */
+			$("#ex6").slider();
+			$("#ex6").on('slide', function(slideEvt) {
+				$("#ex6SliderVal").text(slideEvt.value);
+			});
+
 			
 		});
     </script>
