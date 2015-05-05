@@ -1,0 +1,55 @@
+
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>슬라이드바</title>
+<script src="js/jquery-1.9.1.min.js"></script>  
+  <script src="jquery-ui-/jquery-ui.js" ></script>
+  <script src="JQRange/jQDateRangeSlider-withRuler-min.js"></script>
+ <link rel="stylesheet" href="JQRange/css/iThing.css" type="text/css" />
+ </head>
+ <body>
+
+  <h1>Hello world</h1>
+    <div id="slider" style="width:700px;"></div>
+
+	<span id="dateval">2013-02</span>
+	<script>	
+  //<!--
+  (function($){
+    $(document).ready(function(){
+      $("#slider").dateRangeSlider({
+        bounds: {min: new Date(2013, 1), max: new Date(2015, 2)},
+        defaultValues: {min: new Date(2013, 1), max: new Date(2013,1)},
+		valueLabels:"change",
+		durationIn:1000,
+		durationOut:1000,
+		range:{min:{months:1}, max: {months:1}},
+		step:{months:1},
+		formatter:function(val){
+        var month = val.getMonth() + 1,
+          year = val.getFullYear();
+        return year + "년 " + month+"월";
+      },
+        scales: [{
+          next: function(val){
+            var next = new Date(val);
+            return new Date(next.setMonth(next.getMonth() + 1));
+          },
+          label: function(val){
+            return "";
+          }
+        }]//scales
+      });//dateRangeSlider arguments
+    });//ready function
+
+$("#slider").bind("valuesChanging", function(e, data){
+  var dateValues = $("#slider").dateRangeSlider("values").min;
+      var month = dateValues.getMonth() + 1,
+          year = dateValues.getFullYear();
+    
+  $('#dateval').text(year+" . " + month);
+  });
+  })(jQuery);</script></body>
+
+</html>
