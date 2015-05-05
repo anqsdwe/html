@@ -22,7 +22,7 @@ img {border:0;}
 /*Layout*/
 body {background:url(../image/body_bg.jpg)}
 #wrap {}
-#header {width:100%; height:200px;}
+#header {width:100%; height:327px;}
 #contents {}
 #footer {width:100%; border-top:1px solid #dedede;}
 /*width 100% -> 전체배경*/
@@ -30,24 +30,25 @@ body {background:url(../image/body_bg.jpg)}
 
 /*header_container*/
 .header_container {position:relative; width:990px; height:327px; margin:0 auto; }
+.header_container .icon{position:absolute; width:100%;}
 .header_container h1 {position:absolute; top:150px; left:300px; z-index:20; background-color:rgba(255,255,255,0);}
 .header_container h1 a {display:block; color:#fff; padding:10px 15px; font-size:16px;}
 .header_container h2 {position:absolute; top:110px; left:230px; padding:5px 15px; font-size:24px; text-transform:uppercase; z-index:10; color:#fff; background-color:rgba(255,255,255,0);}
 
-/*페북 아이콘*/
-.header_container .icon {position:absolute; top:230px; left:465px;}
-.header_container .icon ul li {float:left; margin-right:10px; list-style:none;}
-.header_container .icon ul li a {display:block; background:url(../image/icon.png) no-repeat; width:57px; height:57px;}
-.header_container .icon .icon_tit1 a {background-position:0px -116px;}
-.header_container .icon .icon_tit1 a:hover {background-position:0px -174px;}
 
 /*contents layout*/
+#cont_nav {width:100%;}
 #cont_tit {width:100%; }
 #cont_cont {width:100%;}
 
+/*nav_container*/
+.nav_container{width:990px; margin:0 auto;} 
+.nav_container img{overflow:hidden; padding:20px 0;}
+.nav_container img:hover{background-color:#25a2d0; color:#fff;}
+
 /*tit_container*/
 .tit_container {width:990px; margin:0 auto;}
-.tit_container h2 {font-size:36px; text-align:center; font-family:"Nanum Brush Script"; color:#2c94c4;}
+.tit_container .options {font-size:36px; text-align:center; color:#2c94c4;}
 
 /*options*/
 /*.options {width:990px; margin:0 auto;}

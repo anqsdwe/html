@@ -4,8 +4,7 @@
   <meta content="text/html; charset=utf-8" http-equiv="content-type">
   <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' >
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script> 
-  <script type="text/javascript" src="js/setDate.js"></script>
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script src="js/jquery-1.9.1.min.js"></script>  
   <script src="jquery-ui-/jquery-ui.js" ></script>
@@ -45,13 +44,12 @@
   </style>
 
 </head>
-<body onLoad="setDate(document.forms[0])">
+<body>
 
 <div id="wrap">
 	<div id="header">
-    
-        <div class="header_container">
-        	<img src="image/header_menu.jpg" align="middle" usemap="#logo" />
+    	<div class="icon">
+        	<img src="image/header_menu.jpg" usemap="#logo" />
             <map name="logo">
             	<area shape="rect" coords="10,16,254,98" href="#" target="_self">
                 <area shape="rect" coords="320,80,435,24" href="#" target="_self">
@@ -60,6 +58,8 @@
                 <area shape="rect" coords="735,80,863,24" href="#" target="_self">
                 <area shape="rect" coords="900,80,1077,24" href="#" target="_self">
             </map>
+        </div><!--logojpg end-->
+        <div class="header_container">
         	<h1><a href="#">2015 KOOKMIN UNIVERSITY CAPSTONE DESIGN</a></h1>
         	<h2>검색 트래픽 데이터와 서울 아파트 매매가격간의 상관관계</h2>
     	</div><!--header_container end-->
@@ -67,62 +67,25 @@
     
     <div id="contents">
     	
-        <div id="cont_tit">
-        	<img src="image/menubar.jpg" style="display:block; margin-left:auto; margin-right:auto;" usemap="#cont" />
-            <map name="cont">
-            	<area shape="rect" coords="1,1,2,2" href="#" target="_self">
-                <area shape="rect" coords="797,196,1003,255" href="#" target="_self">
+        <div id="cont_nav">
+            <div class="nav_container">
+            	<img src="image/menubar.jpg" style="display:block; margin-left:auto; margin-right:auto;" usemap="startgraph" />
+            <map name="startgraph">
+            	<area shape="rect" coords="1,1,2,2" href="#" target="_self" >
+                <area shape="rect" coords="50,196,1003,255" href="#" target="_self" style="border:1px solid #FFF;">
             </map>
+            </div><!-- nav_container-->
+        </div><!-- cont_nav-->
+        
+        <div id="cont_tit">
+        <div class="tit_container">
+        	<div id="slider"></div>
+						<span id="dateval" style="font-size:20px;color:white;">2013 . 2</span>
+         </div><!-- tit_container-->
         </div><!--cont_tit end-->
-    
-    	<div id="cont_cont">
-		
+        
+		<div id="cont_cont">	
                 <div class="cont_container">
-			
-		<div id="slider"> 
-						
-				<!-- 슬라이더 !-->
-                	    </div>
-			<span id="dateval" style="font-size:20px;color:white;">2013 . 2</span>			
-
-	
-	<script>	
-  //<!--
-  (function($){
-    $(document).ready(function(){
-      $("#slider").dateRangeSlider({
-        bounds: {min: new Date(2013, 1), max: new Date(2015, 2)},
-        defaultValues: {min: new Date(2013, 1), max: new Date(2013,1)},
-		valueLabels:"change",
-		durationIn:1000,
-		durationOut:1000,
-		range:{min:{months:1}, max: {months:1}},
-		step:{months:1},
-		formatter:function(val){
-        var month = val.getMonth() + 1,
-          year = val.getFullYear();
-        return year + "년 " + month+"월";
-      },
-        scales: [{
-          next: function(val){
-            var next = new Date(val);
-            return new Date(next.setMonth(next.getMonth() + 1));
-          },
-          label: function(val){
-            return "";
-          }
-        }]//scales
-      });//dateRangeSlider arguments
-    });//ready function
-
-$("#slider").bind("valuesChanging", function(e, data){
-  var dateValues = $("#slider").dateRangeSlider("values").min;
-      var month = dateValues.getMonth() + 1,
-          year = dateValues.getFullYear();
-    
-  $('#dateval').text(year+" . " + month);
-  });
-  })(jQuery);</script><!--- !-->
                 	<div id="map"></div>    
                 </div><!--cont_container end-->
     	</div><!--cont_cont end-->
@@ -140,8 +103,7 @@ $("#slider").bind("valuesChanging", function(e, data){
     </div><!--footer end-->
     
 </div><!--wrap div end-->
-
-<script type="text/javascript" src="js/setDate.js"></script>
+<script type="text/javascript" src="js/slider.js"></script>
 <script type="text/javascript" src="js/seoul.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/chart.js"></script>

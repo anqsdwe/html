@@ -1,43 +1,8 @@
-<?php 
-//서버이름 추후 변경
-$mysql_host = "localhost";
-$mysql_database = "capstone";
-$mysql_user = "scott";
-$mysql_password = "tiger";
-
-$connection = mysqli_connect($mysql_host, $mysql_user, $mysql_password, $mysql_database)
-			  or die('Error connecting to MySQL server.');
-			
-$query = "SELECT * FROM house ORDER BY house.날짜 desc;";
-$result = mysqli_query($connection, $query) or die('Error querying database.');			
-
-while($row = mysqli_fetch_array($result)){
-	$mc_date[] = $row['날짜'];
-	$mc_nowon[] = $row['노원구'];
-	$mc_mapo[] = $row['마포구'];
-	$mc_enpyung[] = $row['은평구'];
-}
-
-?>
-
 
 var map = L.map('map').setView([37.561, 126.986], 11);			
 						
 L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 	maxZoom: 18, attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' + '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' + 'Imagery © <a href="http://mapbox.com">Mapbox</a>', id: 'examples.map-20v6611k' }).addTo(map);
-
-var array_date = new Array();
-var array_nowon = new Array();
-var array_enpyung = new Array();
-var array_mapo = new Array();
-
-array_date = '<?= json_encode($mc_date) ?>';
-<? for ($i=0; $i<count($mc_date); $i++) { ?> 
-array_date.push('<?=$array_date[$i]?>'); 
-<? } ?> 
-array_nowon = '<?=$mc_date?>';
-array_enpyung = '<?=$mc_date?>';
-array_mapo = '<?=$mc_date?>';						
 						
 // 마우스 호버 효과
 var info = L.control();
