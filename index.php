@@ -7,6 +7,10 @@
   <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script> 
   <script type="text/javascript" src="js/setDate.js"></script>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script src="js/jquery-1.9.1.min.js"></script>  
+  <script src="jquery-ui-/jquery-ui.js" ></script>
+  <script src="JQRange/jQDateRangeSlider-withRuler-min.js"></script>
+ <link rel="stylesheet" href="JQRange/css/iThing.css" type="text/css" />
 	
   <link rel="stylesheet" type="text/css" href="css/style.css" />
   <link rel="icon" href="/image/sunglasses.ico">
@@ -71,24 +75,54 @@
             </map>
         </div><!--cont_tit end-->
     
-    	<div id="cont_cont">	
+    	<div id="cont_cont">
+		
                 <div class="cont_container">
-                	<div class="options">
-<<<<<<< HEAD
-                &nbsp&nbsp    <input id="ex6" type="text" data-slider-ticks="['2008-01','2008-02']" data-slider-ticks-snap-bounds="1" data-slider-ticks-label='["2008년 10월","2008년 2월"]'>
-      			<span id="ex6CurrentSliderValLabel" style="color:white">Current Slider Value: <span id="ex6SliderVal">2008</span></span>
-				<!-- 슬라이드바 옵션 !--->
-=======
-                    <FORM name="example" action="#" >
-<SELECT name="year" onChange="setDate(this.form, this.value, this.form.month.value)">
-</SELECT><span style="color:white">년</span>
-<SELECT name="month" onChange="setDate(this.form, this.form.year.value, this.value)">
-</SELECT><span style="color:white">월</span>
-<SELECT name="day"></SELECT><span style="color:white">일</span>
-<input type="submit" value="sumbit" />
-					</FORM>
->>>>>>> parent of 08dd573... 슬라이드바 추가
-                    </div>
+			
+		<div id="slider"> 
+						
+				<!-- 슬라이더 !-->
+                	    </div>
+			<span id="dateval" style="font-size:20px;color:white;">2013 . 2</span>			
+
+	
+	<script>	
+  //<!--
+  (function($){
+    $(document).ready(function(){
+      $("#slider").dateRangeSlider({
+        bounds: {min: new Date(2013, 1), max: new Date(2015, 2)},
+        defaultValues: {min: new Date(2013, 1), max: new Date(2013,1)},
+		valueLabels:"change",
+		durationIn:1000,
+		durationOut:1000,
+		range:{min:{months:1}, max: {months:1}},
+		step:{months:1},
+		formatter:function(val){
+        var month = val.getMonth() + 1,
+          year = val.getFullYear();
+        return year + "년 " + month+"월";
+      },
+        scales: [{
+          next: function(val){
+            var next = new Date(val);
+            return new Date(next.setMonth(next.getMonth() + 1));
+          },
+          label: function(val){
+            return "";
+          }
+        }]//scales
+      });//dateRangeSlider arguments
+    });//ready function
+
+$("#slider").bind("valuesChanging", function(e, data){
+  var dateValues = $("#slider").dateRangeSlider("values").min;
+      var month = dateValues.getMonth() + 1,
+          year = dateValues.getFullYear();
+    
+  $('#dateval').text(year+" . " + month);
+  });
+  })(jQuery);</script><!--- !-->
                 	<div id="map">
                     <script type="text/javascript" src="js/seoul.js"></script>
 					<script type="text/javascript">
@@ -269,30 +303,5 @@
     
 </div><!--wrap div end-->
 
-<<<<<<< HEAD
-
-
-    <!-- core JavaScript
-    ================================================== -->
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap-slider.js"></script>
-    <script type="text/javascript">
-    	$(document).ready(function() {
-			
-$("#ex6").slider({
-    ticks: ['2008-01', '2008-02'],
-    ticks_labels: ['2008년 10월', '2009년 10월'],
-    ticks_snap_bounds: 1
-});
-			
-		});
-    </script>
-    <!-- Placed at the end of the document so the pages load faster -->
-  
-
-=======
->>>>>>> parent of 08dd573... 슬라이드바 추가
-</body>
-</html>
 </body>
 </html>
